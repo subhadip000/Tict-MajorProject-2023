@@ -25,7 +25,7 @@
               text: "Try again!",
               icon: "error",
               button: "Try Again",
-            });';  //not showing an alert box.
+            });';  
                 echo '</script>';
             }
             ?>

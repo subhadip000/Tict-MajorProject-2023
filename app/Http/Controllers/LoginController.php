@@ -9,23 +9,25 @@ class LoginController extends Controller
 {
     public function Login(Request $request)
     {
-        // session_start();
-        $USEREMAIL = $request->user_email;
-        $PASSWORD = $request->password;
-
-        $response = Http::post('http://127.0.0.1:80/api/login', [
-            "user_email" => $USEREMAIL,
-            "password" => $PASSWORD
+        $email = $request->user_email;
+        $password = $request->password;
+        $response = Http::get('http://127.0.0.1:8000/api/login', [
+            'email' => $email,
+            'password' => $password
         ]);
+        $res = json_decode($response);
 
-
-        $res=json_decode($response);
-
-        if ($res) {
-            // session(["email"=>$res[0]->email]);
-            return view('dashboard');
+        if (count($res) > 0) {
+            session(['username' => $res[0]->user_name]);
+            session(["email" => $res[0]->user_email]);
+            return  redirect()->action([DeviceStateController::class, 'Index']);
         } else {
             return view('login')->with("message", "'Invalid Email or Passsword'");
         }
+    }
+    public function Logout(Request $request)
+    {
+        $request->session()->flush();
+        return view('Login');
     }
 }

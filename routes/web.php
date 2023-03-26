@@ -8,6 +8,18 @@ use App\Http\Controllers\RegisterDeviceController;
 use App\Http\Controllers\sensorRegisterController;
 use App\Http\Controllers\customerReisterController;
 use App\Http\Controllers\deviceIssueController;
+use App\Http\Controllers\LoginCtrl;
+
+// use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\View;
+// use Illuminate\Http\Request;
+// use App\Http\Controllers\LoginCtrl;
+// use App\Http\Controllers\DeviceRegisterCtrl;
+// use App\Http\Controllers\DeviceStatsCtrl;
+// use App\Http\Controllers\DeviceIssueCtrl;
+// use App\Http\Controllers\SensorRegisterCtrl;
+// use App\Http\Controllers\CustomerRegister;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,16 +30,21 @@ use App\Http\Controllers\deviceIssueController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('home');
 });
 Route::get('/login', function () {
     return view('login')->with("message","");
 });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
+// Route::get('/login', function () {
+//     return view('login')->with("message","");
+// });
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
 Route::get('/table', function () {
     return view('table');
 });
@@ -45,11 +62,14 @@ Route::get('/entryCustomer', function () {
 });
 Route::post('/login',[LoginController::class,'Login']);
 
-Route::post('/register',[RegisterController::class,'Register']);
+// Route::post('/register',[RegisterController::class,'Register']);
 
-Route::get('/register', function () {
-    return view('register')->with("message","");
-});
+// Route::get('/register', function () {
+//     return view('register')->with("message","");
+// });
+
+Route::get('dashboard',[DeviceStateController::class,'Index']);
+
 Route::post('/deviceRegForm',[RegisterDeviceController::class,'RegisterDevice']);
 Route::post('/sensorRegForm',[sensorRegisterController::class,'registerSensor']);
 Route::post('/entryCustomer',[customerReisterController::class,'registerCustomer']);
