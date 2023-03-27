@@ -34,7 +34,7 @@
       </a>
     </div>
     <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main" style="height: 60vh;">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active" href="dashboard">
@@ -101,7 +101,7 @@
     </div>
     <!------>
     <div class="sidenav-footer mx-3 ">
-      <div class="card card-plain shadow-none" id="sidenavCard">
+      <div class="card card-plain shadow-none mb-3" id="sidenavCard">
         
       </div>
       <a href="logout" target="_blank" class="btn btn-dark btn-sm w-100 mb-3" type="button">Log Out</a>
@@ -225,7 +225,7 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    <div class="container-fluid py-4">
+    <div class="container-fluid py-4" style="height: 70vh;">
       <div class="row" id="device-details">
 
         <!-- <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">

@@ -34,7 +34,7 @@
       </a>
     </div>
     <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main" style="height: 60vh;">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active" href="dashboard">
