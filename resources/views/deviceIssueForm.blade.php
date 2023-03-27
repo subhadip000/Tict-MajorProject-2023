@@ -101,7 +101,7 @@
       <div class="card card-plain shadow-none" id="sidenavCard">
 
       </div>
-      <a href="" target="_blank" class="btn btn-dark btn-sm w-100 mb-3" type="button">Log Out</a>
+      <a href="logout" target="_blank" class="btn btn-dark btn-sm w-100 mb-3" type="button">Log Out</a>
     </div>
     <!----->
   </aside>

@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\Http;
 
 class deviceIssueController extends Controller
 {
+    public function Index(){
+        if (session('email') == '') {
+            return view('login')->with("message","");
+        }
+        $data = ['username' => session('username'), 'email' => session('email')];
+
+        return view('deviceIssueForm',$data);
+    }
+
     public function IssueDevice(Request $req){
         $deviceId = $req->device_id;
         $customerId = $req->customer_id;

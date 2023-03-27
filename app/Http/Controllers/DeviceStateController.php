@@ -11,10 +11,10 @@ class DeviceStateController extends Controller
   public function Index()
   {
     if (session('email') == '') {
-      return view('Login');
+      return view('login')->with("message","");
     }
     $data = ['username' => session('username'), 'email' => session('email')];
-    return view('Dashboard', $data);
+    return view('dashboard', $data);
   }
   
   public function DeviceState(Request $request)

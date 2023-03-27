@@ -11,7 +11,7 @@ class LoginController extends Controller
     {
         $email = $request->user_email;
         $password = $request->password;
-        $response = Http::get('http://127.0.0.1:8000/api/login', [
+        $response = Http::get('http://127.0.0.1:80/api/login', [
             'email' => $email,
             'password' => $password
         ]);
@@ -28,6 +28,6 @@ class LoginController extends Controller
     public function Logout(Request $request)
     {
         $request->session()->flush();
-        return view('Login');
+        return view('Login')->with("message", "");
     }
 }

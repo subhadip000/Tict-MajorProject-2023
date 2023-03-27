@@ -36,46 +36,31 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login')->with("message","");
 });
-// Route::get('/', function () {
-//     return view('home');
-// });
-// Route::get('/login', function () {
-//     return view('login')->with("message","");
-// });
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// });
-Route::get('/table', function () {
-    return view('table');
-});
-Route::get('/deviceRegForm', function () {
-    return view('deviceRegForm')->with("message","");
-});
-Route::get('/deviceIssueForm', function () {
-    return view('deviceIssueForm');
-});
-Route::get('/sensorRegForm', function () {
-    return view('sensorRegForm');
-});
-Route::get('/entryCustomer', function () {
-    return view('entryCustomer');
-});
-Route::post('/login',[LoginController::class,'Login']);
-
-// Route::post('/register',[RegisterController::class,'Register']);
 
 // Route::get('/register', function () {
 //     return view('register')->with("message","");
 // });
 
 Route::get('dashboard',[DeviceStateController::class,'Index']);
+Route::get('/deviceRegForm',[RegisterDeviceController::class,'Index']);
+Route::get('/deviceIssueForm',[deviceIssueController::class,'Index']);
+Route::get('/sensorRegForm',[sensorRegisterController::class,'Index']);
+Route::get('/entryCustomer',[customerReisterController::class,'Index']);
+Route::get('/table', function () {
+    return view('table');
+});
 
+
+Route::post('/login',[LoginController::class,'Login']);
+// Route::post('/register',[RegisterController::class,'Register']);
 Route::post('/deviceRegForm',[RegisterDeviceController::class,'RegisterDevice']);
 Route::post('/sensorRegForm',[sensorRegisterController::class,'registerSensor']);
 Route::post('/entryCustomer',[customerReisterController::class,'registerCustomer']);
 Route::post('/deviceIssueForm',[deviceIssueController::class,'IssueDevice']);
 
-Route::get('/device-state-reg', function () {
-    return view('DeviceRegForm');
-});
-Route::post('/device-state',[DeviceStateController::class,'DeviceState']);
+// Route::get('/device-state-reg', function () {
+//     return view('DeviceRegForm');
+// });
+// Route::post('/device-state',[DeviceStateController::class,'DeviceState']);
+
+Route::get('/logout',[LoginController::class,'Logout']);

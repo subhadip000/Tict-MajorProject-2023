@@ -5,10 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Http;
- 
+
 
 class RegisterDeviceController extends Controller
 {
+    public function Index()
+    {
+        if (session('email') == '') {
+            return view('login')->with("message","");
+        }
+        $data = ['username' => session('username'), 'email' => session('email')];
+        return view('deviceRegForm', $data)->with("message", "");
+    }
+
     public function RegisterDevice(Request $request)
     {
         $deviceName = $request->device_name;
@@ -16,21 +25,17 @@ class RegisterDeviceController extends Controller
         $batchNo = $request->batch_no;
         $current_date = date('Y-m-d');
 
-        $response = Http::post('http://127.0.0.1:80/api/regDevice',[
-            "device_name"=>$deviceName,
-            "device_code"=>$deviceCode,
-            "batch_no"=>$batchNo,
-            "created_on"=>$current_date
+        $response = Http::post('http://127.0.0.1:80/api/regDevice', [
+            "device_name" => $deviceName,
+            "device_code" => $deviceCode,
+            "batch_no" => $batchNo,
+            "created_on" => $current_date
         ]);
 
-        if(json_decode($response)){
+        if (json_decode($response)) {
             return view('dashboard');
-            
-        }
-        else{
+        } else {
             return view('deviceRegForm')->with("message", "'Device already exist!'");
         }
-
-        
     }
 }

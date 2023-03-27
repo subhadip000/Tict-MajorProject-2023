@@ -7,6 +7,16 @@ use Illuminate\Support\Facades\Http;
 
 class customerReisterController extends Controller
 {
+    public function Index()
+    {
+        if (session('email') == '') {
+            return view('login')->with("message","");
+        }
+        $data = ['username' => session('username'), 'email' => session('email')];
+
+        return view('entryCustomer',$data);
+    }
+
     public function registerCustomer(Request $req){
         $userName = $req->user_name;
         $userEmail = $req->user_email;

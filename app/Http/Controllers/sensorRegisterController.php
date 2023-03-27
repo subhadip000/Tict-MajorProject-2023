@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\Http;
 
 class sensorRegisterController extends Controller
 {
+    public function Index(){
+        if (session('email') == '') {
+            return view('login')->with("message","");
+        }
+        $data = ['username' => session('username'), 'email' => session('email')];
+
+        return view('sensorRegForm',$data);
+    }
+
     public function registerSensor(Request $req){
         $sensorType = $req->sensor_type;
         $sensorName = $req->sensor_name;
